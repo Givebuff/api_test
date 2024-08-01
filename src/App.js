@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
-import RequestPanel from './components/RequestPanel';
-import ResponsePanel from './components/ResponsePanel';
+import RestContainer from './components/RestContainer';
 
 const AppContainer = styled.div`
   display: flex;
@@ -24,23 +23,6 @@ const MainContent = styled.main`
   overflow: hidden;
 `;
 
-const LeftPanel = styled.div`
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-`;
-
-const RightPanel = styled.div`
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-`;
-
-const Divider = styled.div`
-  width: 1px;
-  background-color: #3c3c3c;
-`;
-
 function App() {
   const [response, setResponse] = useState(null);
 
@@ -48,23 +30,21 @@ function App() {
     <Router>
       <AppContainer>
         {/*Sidebar는 다른 기능 대비*/}
-        {/* <SidebarContainer>
+        <SidebarContainer>
           <Sidebar />
-        </SidebarContainer> */}
+        </SidebarContainer>
         <MainContent>
           <Routes>
             <Route
               path="/"
               element={
-                <>
-                  <LeftPanel>
-                    <RequestPanel setResponse={setResponse} />
-                  </LeftPanel>
-                  <Divider />
-                  <RightPanel>
-                    <ResponsePanel response={response} />
-                  </RightPanel>
-                </>
+                <RestContainer setResponse={setResponse} response={response}/>
+              }
+            />
+            <Route
+              path="/rest"
+              element={
+                <RestContainer setResponse={setResponse} response={response}/>
               }
             />
           </Routes>

@@ -32,10 +32,10 @@ const RequestLink = styled(Link)`
 function Sidebar() {
   return (
     <SidebarContainer>
-      <SidebarTitle>Sidebar</SidebarTitle>
+      <SidebarTitle>Interface</SidebarTitle>
       <RequestList>
-        <RequestItem><RequestLink to="/">Sidebar 1</RequestLink></RequestItem>
-        <RequestItem><RequestLink to="/">Sidebar 2</RequestLink></RequestItem>
+        <RequestItem><RequestLink to="/rest">REST API</RequestLink></RequestItem>
+        <RequestItem><RequestLink to="/socket">Socket</RequestLink></RequestItem>
       </RequestList>
     </SidebarContainer>
   );
